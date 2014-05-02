@@ -11,6 +11,7 @@ input {
 	border-bottom: 1px solid #ddd;
 	padding: 5px 12px;
 	margin: 0;
+	outline: none;
 	transition: all 400ms ease;
 }
 input::before {
@@ -21,7 +22,7 @@ input::before {
 /**
  * toggle button
  */
-input:nth-of-type(1) { display: block !important; margin: 0 0 10px 0; background: #ddd; }
+input:nth-of-type(1) { display: block !important; margin: 0 0 30px 0; background: #ddd; }
 input:nth-of-type(1):checked { background: #fff !important; }
 input:nth-of-type(1):checked::before { content: 'Show Minefield'; }
 input:nth-of-type(1):not(:checked)::before { content: 'Hide Minefield'; }
