@@ -1,35 +1,45 @@
 
 body {
-	padding: 130px 60px;
-	margin: 0;
+	margin: 0 auto;
+	padding-top: 130px;
+	width: 920px;
 }
 input {
 	-webkit-appearance: none;
+	-moz-appearance: none;
 	display: block;
 	float: left;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	padding: 5px 12px;
+	border-radius: 0;
+	padding: 0;
 	margin: 0;
+	line-height: 50px;
+	height: 50px;
+	width: 50px;
 	outline: none;
+	text-align: center;
 	transition: all 400ms ease;
 }
 input::before {
 	content: '-';
+	font-size: 16px;
+	font-weight: bolder;
+	font-family: monospace;
 }
 
 
 /**
  * toggle button
  */
-input:nth-of-type(1) { display: block !important; margin: 0 0 30px 0; background: #ddd; }
-input:nth-of-type(1):checked { background: #fff !important; }
+input:nth-of-type(1) { display: block !important; margin: 0 0 30px 0; width: 200px; background: #ddd; }
+input:nth-of-type(1):checked { background: #fff !important; border: 1px solid #ddd;}
 input:nth-of-type(1):checked::before { content: 'Show Minefield'; }
 input:nth-of-type(1):not(:checked)::before { content: 'Hide Minefield'; }
 input:nth-of-type(1):checked~input:nth-of-type(-n+122) { margin-left: -300px; }
 
-input:nth-of-type(1):checked~input:nth-of-type(n+122) { position: relative; left: 0; top: -237px; }
-input:nth-of-type(1):not(:checked)~input:nth-of-type(n+122) { position: relative; left: 300px; top: -237px; }
+input:nth-of-type(1):checked~input:nth-of-type(n+122) { position: relative; left: 230px; top: -450px; }
+input:nth-of-type(1):not(:checked)~input:nth-of-type(n+122) { position: relative; left: 460px; top: -450px; }
 
 /**
  * display rules
@@ -51,48 +61,50 @@ input:nth-of-type(n+122):checked::before { content: '0'; }
 /**
  * remark
  */
-input:nth-of-type(2){ display: inline; padding: 0; }
+input:nth-of-type(2),
+input:nth-of-type(3),
+input:nth-of-type(4),
+input:nth-of-type(5)
+{ display: inline; width: 0; height: 0; line-height: 0; visibility: hidden; }
+
 input:nth-of-type(2)::before {
 	position: absolute;
-	left: 60px;
-	top: 10px;
-	width: 600px;
-	height: 20px;
+	left: 0px;
+	top: 20px;
+	width: 100%;
 	font-size: 20px;
 	content: 'An ugly Minesweeper in pure HTML & CSS without JS.';
+	visibility: visible;
 }
 
-input:nth-of-type(3){ display: inline; padding: 0; }
 input:nth-of-type(3)::before {
 	position: absolute;
-	left: 60px;
-	top: 40px;
-	width: 600px;
-	height: 20px;
+	left: 0px;
+	top: 50px;
+	width: 100%;
 	font-size: 15px;
 	content: 'https://github.com/imsun/CSS-Minesweeper';
+	visibility: visible;
 }
 
-input:nth-of-type(4){ display: inline; padding: 0; }
 input:nth-of-type(4)::before {
 	position: absolute;
-	left: 60px;
-	top: 80px;
-	width: 600px;
-	height: 20px;
+	left: 0px;
+	top: 90px;
+	width: 100%;
 	font-size: 15px;
 	content: 'Grey area: minefield, click to set landmine.';
+	visibility: visible;
 }
 
-input:nth-of-type(5){ display: inline; padding: 0; }
 input:nth-of-type(5)::before {
 	position: absolute;
-	left: 60px;
-	top: 100px;
-	width: 600px;
-	height: 20px;
+	left: 0px;
+	top: 110px;
+	width: 100%;
 	font-size: 15px;
 	content: 'White area: click to play.';
+	visibility: visible;
 }
 
 /**
@@ -100,7 +112,7 @@ input:nth-of-type(5)::before {
  */
 *+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked{ background: red; }
 *+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: '*';}
-*+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::after{ z-index: 99; position: fixed; left: 40%; top: 30%; width: 20%; height: 100px; text-align: center; font-size: 30px; line-height: 100px; content: 'You lose!'; background: red; }
+*+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::after{ z-index: 99; position: fixed; left: 40%; top: 30%; width: 20%; text-align: center; font-size: 30px; line-height: 100px; content: 'You lose!'; background: red; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "8"; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+input:checked+*:not(:checked)+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "7"; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "7"; }
