@@ -6,8 +6,6 @@ body {
 }
 input {
 	-webkit-appearance: none;
-	-moz-appearance: none;
-	display: block;
 	float: left;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
@@ -22,7 +20,7 @@ input {
 	transition: all 400ms ease;
 }
 input::before {
-	content: '-';
+	content: ' ';
 	font-size: 16px;
 	font-weight: bolder;
 	font-family: monospace;
@@ -108,11 +106,34 @@ input:nth-of-type(5)::before {
 }
 
 /**
+ * webkit only
+ */
+body::after {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	font-size: 40px;
+	line-height: 100px;
+	text-align: center;
+	content: 'Webkit only. Please use Chrome or Safari to visit this page :)';
+	visibility: visible;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	body::after {
+		display: none;
+	}
+}
+
+/**
  * game rules
  */
 *+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked{ background: red; }
 *+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: '*';}
-*+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::after{ z-index: 99; position: fixed; left: 40%; top: 30%; width: 20%; text-align: center; font-size: 30px; line-height: 100px; content: 'You lose!'; background: red; }
+*+*+*+*+*+*+*+*+*+*+*+*+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::after{ z-index: 99; position: fixed; left: 40%; top: 30%; width: 20%; font-size: 30px; line-height: 100px; content: 'You lose!'; background: #fff; border: 2px solid #000; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "8"; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+input:checked+*:not(:checked)+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "7"; }
 input:checked+input:checked+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+input:checked+*:not(:checked)+input:checked+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+input:checked::before{ content: "7"; }
